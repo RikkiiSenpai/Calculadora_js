@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora js</title>
+    <style>
+        body {
+            background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+            display: flex;
+            justify-content: center;
+        }
+
+        #igual{
+            width: 124px;
+            height: 83px;
+            background: linear-gradient(180deg, #00c3ff, #0b96af);
+  box-shadow: inset -8px 0 8px rgba(0, 183, 255, 0.425),
+    inset 0 -8px 8px rgba(0, 204, 255, 0.25), 0 0 0 2px rgba(5, 78, 80, 0.75),
+    10px 20px 25px rgba(3, 46, 59, 0.918);
+  user-select: none;
+  cursor: pointer;
+  font-weight: 400;
+  border-radius: 10px;
+  border-color: aqua;
+        }
+        #c{
+            width: 124px;
+            height: 83px;
+            background: linear-gradient(180deg, #ff0000, #af0b0b);
+  box-shadow: inset -8px 0 8px rgba(255, 0, 0, 0.425),
+    inset 0 -8px 8px rgba(255, 0, 0, 0.25), 0 0 0 2px rgba(80, 5, 5, 0.75),
+    10px 20px 25px rgba(59, 3, 3, 0.918);
+  user-select: none;
+  cursor: pointer;
+  font-weight: 400;
+  border-radius: 10px;
+  border-color: #ff0000;
+        }
+
+        .button {
+            width: 124px;
+            height: 83px;
+            background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
+    10px 20px 25px rgba(0, 0, 0, 0.4);
+  user-select: none;
+  cursor: pointer;
+  font-weight: 400;
+  border-radius: 10px;
+        }
+
+        #calculadora {
+            max-width: 400px;
+            max-height: 600px;
+            background-color: rgb(33, 37, 37);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+ 
+            
+        }
+
+        #caixadecalculos {
+            background-color: rgb(22, 37, 23);
+            max-width: 360px;
+            height: 50px;
+            margin: 20px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            border-radius: 20px;
+            align-items: center;
+            color: aliceblue;
+        }
+
+        #caixadebotoes {
+            background-color: rgb(74, 77, 77);
+            height: 500px;
+            margin: 10px;
+            display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        }
+        
+      
+    </style>
+</head>
+
+<body>
+    <div id="calculadora">
+        <div id="caixadecalculos">
+            <p id="valor1" href=""></p>
+            <p id="operador" href=""></p>
+            <p id="valor2" href=""></p>
+            <p id="operador2" href=""></p>
+            <p id="resultado" href=""></p>
+        </div>
+        <div id="caixadebotoes">
+            <button onclick="reset()" id="c">C</button>
+            <button onclick="apagar()" id="btapagar" class="button">#</button>
+            <button onclick="divisao()" id="operadordivisao" class="button">÷</button>
+            <button onclick="multiplicacao()" id="btvezes" class="button">*</button>
+            <button onclick="subtracao()" id="btsubtracao" class="button">-</button>
+            <button onclick="mais()" id="operadormais" class="button">+</button>
+            <button onclick="sete()" id="sete" class="button">7</button>
+            <button onclick="oito()" class="button">8</button>
+            <button onclick="nove()" class="button">9</button>
+            <button onclick="quatro()" class="button">4</button>
+            <button onclick="cinco()" class="button">5</button>
+            <button onclick="seis()" class="button">6</button>
+            <button onclick="um()" class="button">1</button>
+            <button onclick="dois()" class="button">2</button>
+            <button onclick="treis()" class="button">3</button>
+            <button onclick="zero()" class="button">0</button>
+            <button onclick="virgula()" class="button">,</button>
+            <button onclick="igual()" id="igual" c>=</button>
+        </div>
+    </div>
+    <script>
+        var simbolo=0;
+        var passos=0;
+        var valor1 = 0;
+        var valor2 = 0;
+        var resultado = 0;
+        interruptor = false;
+        interruptor2 = false;
+        var operadorr = false
+        console.log(operadorr);
+
+        function subtracao() {
+            if (interruptor) {
+                passos=2;
+                operadorr = true;
+                let valorsubtracao = "-";
+                simbolo=4;
+                document.getElementById("operador").innerHTML = valorsubtracao;
+
+            }
+            }
+
+
+        function multiplicacao() {
+            if (interruptor) {
+                passos=2;
+                operadorr = true;
+                let valormultiplicacao = "*";
+                simbolo=3;
+                document.getElementById("operador").innerHTML = valormultiplicacao;
+
+            }
+            }
+
+
+        function divisao() {
+            if (interruptor) {
+                passos=2;
+                operadorr = true;
+                let valordivisao = "÷";
+                simbolo=2;
+                document.getElementById("operador").innerHTML = valordivisao;
+
+            }
+            }
+
+
+
+        function mais() {
+            if (interruptor) {
+                passos=2;
+                operadorr = true;
+                let valormais = "+";
+                simbolo=1;
+                document.getElementById("operador").innerHTML = valormais;
+
+                
+            }
+
+        }
+
+        function virgula() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += '.';
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += '.';
+}
+}
+
+        function zero() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += 0;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 0;
+}
+}
+
+        function um() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += 1;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 1;
+}
+}
+
+        function dois() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += 2;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 2;
+}
+}
+        function treis() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += 3;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 3;
+}
+}
+
+        function quatro() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += 4;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 4;
+}
+}
+
+        function cinco() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += 5;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 5;
+}
+}
+
+        function seis() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+ 
+    valor1 = document.getElementById("valor1").innerHTML += 6;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+  
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 6;
+}
+}
+        function sete() {
+
+            if (!operadorr) {
+                passos=1;
+                interruptor = true;
+             
+                valor1 = document.getElementById("valor1").innerHTML += 7;
+                console.log(valor1)
+            } else if (interruptor) {
+                interruptor2 = true;
+              
+                passos=3;
+                valor2 = document.getElementById("valor2").innerHTML += 7;
+            }
+        }
+
+
+        function oito() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+   
+    valor1 = document.getElementById("valor1").innerHTML += 8;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+    
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 8;
+}
+}
+
+function nove() {
+
+if (!operadorr) {
+    passos=1;
+    interruptor = true;
+   
+    valor1 = document.getElementById("valor1").innerHTML += 9;
+    console.log(valor1)
+} else if (interruptor) {
+    interruptor2 = true;
+   
+    passos=3;
+    valor2 = document.getElementById("valor2").innerHTML += 9;
+}
+}
+
+
+
+        function igual() {
+            if (interruptor2 && simbolo==1) {
+                passos=4;
+                var num1 = parseFloat(valor1);
+                var num2 = parseFloat(valor2);
+
+                document.getElementById("operador2").innerHTML = "=";
+               resultado= document.getElementById("resultado").innerHTML = num1 + num2;
+
+            } else if(interruptor2 && simbolo==2){
+                passos=4;
+                var num1 = parseFloat(valor1);
+                var num2 = parseFloat(valor2);
+
+                document.getElementById("operador2").innerHTML = "=";
+               resultado= document.getElementById("resultado").innerHTML = num1 / num2;
+
+            }
+         else if(interruptor2 && simbolo==3){
+                passos=4;
+                var num1 = parseFloat(valor1);
+                var num2 = parseFloat(valor2);
+
+                document.getElementById("operador2").innerHTML = "=";
+               resultado= document.getElementById("resultado").innerHTML = num1 * num2;
+
+            } else if(interruptor2 && simbolo==4){
+                passos=4;
+                var num1 = parseFloat(valor1);
+                var num2 = parseFloat(valor2);
+
+                document.getElementById("operador2").innerHTML = "=";
+               resultado= document.getElementById("resultado").innerHTML = num1 - num2;
+
+            }
+        }
+
+
+function reset(){
+    interruptor = false;
+        interruptor2 = false;
+     operadorr = false;
+    passos=0;
+        document.getElementById("operador").innerHTML = "";
+        document.getElementById("operador2").innerHTML = "";
+        document.getElementById("resultado").innerHTML = "";
+        document.getElementById("valor1").innerHTML = "";
+        document.getElementById("valor2").innerHTML = "";
+}
+
+function apagar(){
+if(passos==4){
+    document.getElementById("resultado").innerHTML = "";
+    document.getElementById("operador2").innerHTML = "";
+    passos=3;
+   
+}
+
+else if(passos==3){
+    interruptor=true;
+    document.getElementById("valor2").innerHTML = "";
+    interruptor2=true;
+    passos=2;
+}
+
+else if(passos==2 ){
+    document.getElementById("operador").innerHTML = "";
+    operadorr = false;
+    
+    passos=1;
+
+
+}
+
+else if(passos==1){
+    document.getElementById("valor1").innerHTML = "";
+    interruptor=true;
+    operadorr=false;
+    passos=0;
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+    </script>
+</body>
+
+</html>
